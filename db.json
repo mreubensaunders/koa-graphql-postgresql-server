@@ -1,0 +1,10 @@
+{
+    "users": [
+        {"id": "1", "userName": "Michael", "age": "26", "jobId": "2"},
+        {"id": "2", "userName": "Millie", "age": "21", "jobId": "1"}
+    ],
+    "jobs": [
+        {"id": "1", "title": "Barista"},
+        {"id": "2", "title": "Developer"}
+    ]
+}

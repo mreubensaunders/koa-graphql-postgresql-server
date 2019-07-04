@@ -1,4 +1,5 @@
 const graphql = require('graphql');
+const axios = require('axios');
 
 const {  
   GraphQLSchema,
@@ -6,18 +7,29 @@ const {
   GraphQLString
 } = graphql
 
-var schema = new GraphQLSchema({
-  query: new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return 'world';
-        }
-      }
-    }
+const UserType = new GraphQLObjectType({
+  name: 'User',
+  fields:()=>( {
+    id: {type: GraphQLString},
+    userName: {type: GraphQLString},
+    age:{type: GraphQLString}
   })
 });
 
-module.exports = schema;
+const RootQuery = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {    
+    user: {
+      type: UserType,
+      args: { id: { type: GraphQLString } },
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:3000/users/${args.id}`)
+        .then(res => res.data);
+      }
+    }
+  }
+});
+
+module.exports = new GraphQLSchema({
+  query: RootQuery
+});
