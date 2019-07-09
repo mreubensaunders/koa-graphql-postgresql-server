@@ -1,6 +1,9 @@
 {
   "name": "autumn",
-  "version": "1.0.0",  
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon server.js | json-server --watch db.json --port 3001"
+  },
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
