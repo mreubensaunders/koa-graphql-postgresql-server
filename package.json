@@ -1,5 +1,9 @@
 {
   "name": "autumn",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3001 | nodemon server.js",
+    "test": "jest"
+  },
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
