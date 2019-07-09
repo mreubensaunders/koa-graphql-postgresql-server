@@ -1,6 +1,11 @@
 {
   "name": "autumn",
   "version": "1.0.0",
+  "scripts": {
+    "start": "modemon server.js",
+    "build": "ng build",
+    "heroku-postbuild": "json-server --watch db.json --port 3001"
+  }
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
