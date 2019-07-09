@@ -4,7 +4,7 @@ const graphqlHTTP = require('koa-graphql');
 const schema = require('./schema');
 
 const server = new Koa();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // server.use(async ctx => {
 //   ctx.body = 'Hello World';
