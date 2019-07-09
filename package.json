@@ -1,9 +1,6 @@
 {
   "name": "autumn",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "nodemon server.js"
-  },
+  "version": "1.0.0",  
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
