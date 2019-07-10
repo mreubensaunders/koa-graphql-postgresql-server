@@ -7,6 +7,7 @@
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
     "graphql": "^14.4.1",
     "json-server": "^0.15.0",
     "koa": "^2.7.0",
