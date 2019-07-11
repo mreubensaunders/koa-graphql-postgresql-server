@@ -2,7 +2,7 @@
   "name": "autumn",
   "version": "1.0.0",
   "scripts": {
-    "start": "nodemon server.js | json-server --watch db.json --port 3001"
+    "start": "json-server --watch db.json --port 3001 | nodemon server.js"
   },
   "main": "server.js",
   "license": "MIT",
