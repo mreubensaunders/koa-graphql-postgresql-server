@@ -17,9 +17,19 @@ const UserType = new GraphQLObjectType({
   })
 });
 
+const ArticleType = new GraphQLObjectType({
+  name: 'Article',
+  fields:()=>( {
+    id: {type: GraphQLString},
+    title: {type: GraphQLString},
+    content: {type: GraphQLString},
+    tags: {type: new GraphQLList(GraphQLString)}
+  })
+});
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  fields: {    
+  fields: {
     user: {
       type: UserType,
       args: { id: { type: GraphQLString } },
@@ -32,6 +42,21 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(UserType),
        resolve(parentValue, args) {
         return axios.get(`http://localhost:3001/users/`)
+        .then(res => res.data);
+      }
+    },
+    article: {
+      type: ArticleType,
+      args: { id: { type: GraphQLString }},
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:3001/articles/${args.id}`)
+        .then(res => res.data);
+      }
+    },
+    articles: {
+      type: new GraphQLList(ArticleType),      
+      resolve(parentValue, args) {
+        return axios.get(`http://localhost:3001/articles/`)
         .then(res => res.data);
       }
     }
